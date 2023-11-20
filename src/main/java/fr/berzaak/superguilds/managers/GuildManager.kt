@@ -1,14 +1,13 @@
 package fr.berzaak.superguilds.managers
 
 import fr.berzaak.superguilds.guild.Guild
-import java.util.*
 
 class GuildManager {
 
-    val guilds: MutableMap<Guild, UUID> = mutableMapOf<Guild, UUID>()
+    val guilds = mutableListOf<Guild>()
 
     fun createNewGuilds(guild: Guild) {
-        guilds[guild] = guild.owner
+        guilds.add(guild)
     }
 
     fun removeGuilds(guild: Guild) {
@@ -16,7 +15,7 @@ class GuildManager {
     }
 
     fun getGuildFromName(name: String): Guild? {
-        return guilds.keys.firstOrNull { it.name == name }
+        return guilds.firstOrNull { it.name == name }
     }
 
 }
