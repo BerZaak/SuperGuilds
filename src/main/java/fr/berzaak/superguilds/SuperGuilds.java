@@ -1,5 +1,6 @@
 package fr.berzaak.superguilds;
 
+import fr.berzaak.superguilds.listeners.GuildPlayerListener;
 import fr.berzaak.superguilds.manager.GuildManager;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -14,6 +15,9 @@ public final class SuperGuilds extends JavaPlugin {
 
     @Override
     public void onEnable() {
+
+        Bukkit.getPluginManager().registerEvents(new GuildPlayerListener(), this);
+
         Bukkit.getLogger().log(Level.FINE, "SuperGuilds - Enabled !");
         instance = this;
     }
