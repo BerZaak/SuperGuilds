@@ -8,7 +8,7 @@ public final class Guild {
 
     private final Set<GuildPlayer> players = Sets.newHashSet();
 
-    public Guild() {
+    public Guild(String name, GuildPlayer owner) {
 
     }
 
