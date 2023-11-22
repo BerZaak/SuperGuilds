@@ -31,6 +31,11 @@ public final class GuildManager {
 
     }
 
+    public void createNewGuild(Guild guild) {
+        guilds.add(guild);
+        guild.getOwner().setGuild(guild);
+    }
+
     public void loadGuildPlayer(UUID uuid) {
         players.put(uuid, new GuildPlayer(uuid));
     }

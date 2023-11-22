@@ -1,6 +1,7 @@
 package fr.berzaak.superguilds.commands;
 
 import fr.berzaak.superguilds.SuperGuilds;
+import fr.berzaak.superguilds.guild.Guild;
 import fr.berzaak.superguilds.utils.GPlayerUtils;
 import fr.berzaak.superguilds.utils.commands.BCommand;
 import fr.berzaak.superguilds.utils.commands.Command;
@@ -23,7 +24,11 @@ public final class GuildCreateCommand implements BCommand {
             return;
         }
 
+        Guild guild = new Guild(args.getArgs(0), SuperGuilds.getInstance().getGuildManager().getGuildPlayer(player.getUniqueId()));
 
+        SuperGuilds.getInstance().getGuildManager().createNewGuild(guild);
+
+        player.sendMessage("§eYou just created the new guild : §6" + args.getArgs(0));
 
     }
 }
