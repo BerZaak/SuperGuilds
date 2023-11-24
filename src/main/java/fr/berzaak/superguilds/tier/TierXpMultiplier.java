@@ -1,7 +1,5 @@
 package fr.berzaak.superguilds.tier;
 
-import org.bukkit.Material;
-
 public final class TierXpMultiplier extends Tier{
 
     public TierXpMultiplier(int level) {
