@@ -2,8 +2,6 @@ package fr.berzaak.superguilds.tier;
 
 public abstract class Tier {
 
-
-
     private int level = 0;
 
     public Tier(int level) {
