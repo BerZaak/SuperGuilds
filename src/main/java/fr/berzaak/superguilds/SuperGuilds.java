@@ -54,4 +54,5 @@ public final class SuperGuilds extends JavaPlugin {
     public InventoryManager getInventoryManager() {
         return inventoryManager;
     }
+
 }
