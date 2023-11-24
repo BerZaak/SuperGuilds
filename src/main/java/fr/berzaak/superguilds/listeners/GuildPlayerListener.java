@@ -1,11 +1,12 @@
 package fr.berzaak.superguilds.listeners;
 
 import fr.berzaak.superguilds.SuperGuilds;
-import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
+
+import java.util.concurrent.CompletableFuture;
 
 public final class GuildPlayerListener implements Listener {
 
@@ -14,7 +15,7 @@ public final class GuildPlayerListener implements Listener {
     @EventHandler
     public void onJoin(PlayerJoinEvent event) {
 
-        Bukkit.getScheduler().runTaskAsynchronously(instance, () -> {
+        CompletableFuture.runAsync(() -> {
             instance.getGuildManager().loadGuildPlayer(event.getPlayer().getUniqueId());
         });
 
@@ -22,7 +23,7 @@ public final class GuildPlayerListener implements Listener {
 
     public void onQuit(PlayerQuitEvent event) {
 
-        Bukkit.getScheduler().runTaskAsynchronously(instance, () -> {
+        CompletableFuture.runAsync(() -> {
             instance.getGuildManager().unloadGuildPlayer(event.getPlayer().getUniqueId());
         });
 
