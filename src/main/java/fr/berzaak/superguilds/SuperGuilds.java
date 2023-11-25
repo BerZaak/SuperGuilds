@@ -10,6 +10,9 @@ import fr.minuskube.inv.InventoryManager;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.logging.Level;
 
 public final class SuperGuilds extends JavaPlugin {
@@ -17,6 +20,7 @@ public final class SuperGuilds extends JavaPlugin {
     private static SuperGuilds instance;
     private final GuildManager guildManager = new GuildManager();
     private InventoryManager inventoryManager;
+    private final ExecutorService executorService = Executors.newFixedThreadPool(3);
 
 
     @Override
@@ -55,4 +59,7 @@ public final class SuperGuilds extends JavaPlugin {
         return inventoryManager;
     }
 
+    public ExecutorService getExecutorService() {
+        return executorService;
+    }
 }

@@ -17,7 +17,7 @@ public final class GuildPlayerListener implements Listener {
 
         CompletableFuture.runAsync(() -> {
             instance.getGuildManager().loadGuildPlayer(event.getPlayer().getUniqueId());
-        });
+        }, instance.getExecutorService());
 
     }
 
@@ -25,7 +25,7 @@ public final class GuildPlayerListener implements Listener {
 
         CompletableFuture.runAsync(() -> {
             instance.getGuildManager().unloadGuildPlayer(event.getPlayer().getUniqueId());
-        });
+        }, instance.getExecutorService());
 
     }
 
