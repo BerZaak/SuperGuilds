@@ -14,18 +14,18 @@ import org.bukkit.entity.Player;
 public final class GuildUpgradeInventory implements InventoryProvider {
 
     public static final SmartInventory INVENTORY = SmartInventory.builder()
-            .id("guildupgrad")
+            .id("guildupgrade")
             .provider(new GuildUpgradeInventory())
             .size(3, 9)
-            .title("§6Guild Upgrad")
+            .title("§6Guild Upgrade")
             .manager(SuperGuilds.getInstance().getInventoryManager())
             .build();
 
     @Override
     public void init(Player player, InventoryContents inventoryContents) {
 
-        GuildPlayer guildPlayer = SuperGuilds.getInstance().getGuildManager().getGuildPlayer(player.getUniqueId());
-        Tier xpMultiplier = guildPlayer.getGuild().getGuildTier().getXpMultiplier();
+        GuildPlayer guildPlayer = SuperGuilds.getInstance().getPlayerManager().getGuildPlayer(player.getUniqueId());
+        Tier xpMultiplier = guildPlayer.getGuild().get().getGuildTier().getXpMultiplier();
 
         inventoryContents.add(ClickableItem.of(new ItemBuilder(Material.EXP_BOTTLE).name("§2XP MULTIPLIER").lore(
                 "",

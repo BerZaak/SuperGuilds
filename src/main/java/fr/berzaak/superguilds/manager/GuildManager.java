@@ -1,47 +1,28 @@
 package fr.berzaak.superguilds.manager;
 
-import com.google.common.cache.Cache;
-import com.google.common.cache.CacheBuilder;
 import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 import fr.berzaak.superguilds.guild.Guild;
-import fr.berzaak.superguilds.guild.GuildPlayer;
-import fr.berzaak.superguilds.utils.GPlayerUtils;
 
 import java.util.List;
-import java.util.UUID;
+import java.util.Map;
+import java.util.Optional;
 
 public final class GuildManager {
 
-    private final List<Guild> guilds = Lists.newArrayList();
-    private final Cache<UUID, GuildPlayer> players = CacheBuilder.newBuilder().build();
+    private final Map<String, Guild> guilds = Maps.newHashMap();
 
     public List<Guild> getGuilds() {
-        return guilds;
-    }
-
-    public GuildPlayer getGuildPlayer(UUID uuid) {
-        return players.getIfPresent(uuid);
-    }
-
-    public boolean isSameTeam(UUID first, UUID second) {
-
-        if (!GPlayerUtils.hasGuild(getGuildPlayer(first)) || !GPlayerUtils.hasGuild(getGuildPlayer(second))) return false;
-
-        return getGuildPlayer(first).getGuild().equals(getGuildPlayer(second).getGuild());
-
+        return Lists.newArrayList(guilds.values());
     }
 
     public void createNewGuild(Guild guild) {
-        guilds.add(guild);
+        guilds.put(guild.getName(), guild);
         guild.getOwner().setGuild(guild);
     }
 
-    public void loadGuildPlayer(UUID uuid) {
-        players.put(uuid, new GuildPlayer(uuid));
-    }
-
-    public void unloadGuildPlayer(UUID uuid) {
-        players.invalidate(uuid);
+    public Optional<Guild> getGuildByName(String name) {
+        return Optional.ofNullable(guilds.get(name));
     }
 
 }

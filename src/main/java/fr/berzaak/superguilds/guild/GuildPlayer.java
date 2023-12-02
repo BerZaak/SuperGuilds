@@ -3,6 +3,7 @@ package fr.berzaak.superguilds.guild;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
+import java.util.Optional;
 import java.util.UUID;
 
 public final class GuildPlayer {
@@ -18,8 +19,8 @@ public final class GuildPlayer {
         return uuid;
     }
 
-    public Guild getGuild() {
-        return guild;
+    public Optional<Guild> getGuild() {
+        return Optional.ofNullable(guild);
     }
 
     public void setGuild(Guild guild) {

@@ -5,12 +5,12 @@ import fr.berzaak.superguilds.commands.GuildUpgradeCommand;
 import fr.berzaak.superguilds.listeners.GuildEntityListener;
 import fr.berzaak.superguilds.listeners.GuildPlayerListener;
 import fr.berzaak.superguilds.manager.GuildManager;
+import fr.berzaak.superguilds.manager.PlayerManager;
 import fr.berzaak.superguilds.utils.commands.CommandFramework;
 import fr.minuskube.inv.InventoryManager;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.logging.Level;
@@ -19,8 +19,9 @@ public final class SuperGuilds extends JavaPlugin {
 
     private static SuperGuilds instance;
     private final GuildManager guildManager = new GuildManager();
+    private final PlayerManager playerManager = new PlayerManager();
     private InventoryManager inventoryManager;
-    private final ExecutorService executorService = Executors.newFixedThreadPool(3);
+    private final ExecutorService executorService = Executors.newFixedThreadPool(2);
 
 
     @Override
@@ -44,7 +45,7 @@ public final class SuperGuilds extends JavaPlugin {
 
     @Override
     public void onDisable() {
-
+        executorService.shutdown();
     }
 
     public static SuperGuilds getInstance() {
@@ -53,6 +54,10 @@ public final class SuperGuilds extends JavaPlugin {
 
     public GuildManager getGuildManager() {
         return guildManager;
+    }
+
+    public PlayerManager getPlayerManager() {
+        return playerManager;
     }
 
     public InventoryManager getInventoryManager() {
