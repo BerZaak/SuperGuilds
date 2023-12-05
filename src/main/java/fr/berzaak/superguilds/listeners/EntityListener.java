@@ -30,7 +30,5 @@ public final class EntityListener implements Listener {
             player.sendMessage("§aDebug -- XpMultiplier used : §2x" + xpMultiplier.getMultiplier(xpMultiplier.getLevel()));
 
         });
-
     }
-
 }

@@ -58,5 +58,4 @@ public final class Guild {
             sendMessage("§cQuest ended !");
         }
     }
-
 }

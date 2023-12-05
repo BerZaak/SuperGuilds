@@ -31,11 +31,7 @@ public final class BlockListener implements Listener {
                     guild.advanceQuest();
 
                 }
-
             });
-
         }
-
     }
-
 }

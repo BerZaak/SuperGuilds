@@ -39,5 +39,4 @@ public final class PlayerManager {
         players.invalidate(uuid);
         //TODO : Save player's data to database
     }
-
 }

@@ -28,5 +28,4 @@ public final class QuestManager {
     public Map<String, Quest> getAvailableQuests() {
         return availableQuests;
     }
-
 }

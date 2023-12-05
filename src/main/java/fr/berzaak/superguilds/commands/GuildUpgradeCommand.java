@@ -26,6 +26,5 @@ public final class GuildUpgradeCommand implements BCommand {
         } else {
             player.sendMessage("§eYou're not in a guild");
         }
-
     }
 }

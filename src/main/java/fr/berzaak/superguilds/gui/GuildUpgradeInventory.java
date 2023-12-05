@@ -45,7 +45,6 @@ public final class GuildUpgradeInventory implements InventoryProvider {
             xpMultiplier.setLevel(xpMultiplier.getLevel() + 1);
             event.getWhoClicked().sendMessage("§aYou just buyed an extra level for: §2" + xpMultiplier.getPrice(xpMultiplier.getLevel()));
 
-
         }));
 
     }

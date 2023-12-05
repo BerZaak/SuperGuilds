@@ -24,5 +24,4 @@ public final class PlayerListener implements Listener {
         CompletableFuture.runAsync(() -> instance.getPlayerManager().unloadGuildPlayer(event.getPlayer().getUniqueId()), instance.getExecutorService());
 
     }
-
 }

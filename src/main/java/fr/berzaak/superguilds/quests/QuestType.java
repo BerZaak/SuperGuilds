@@ -6,6 +6,6 @@ public enum QuestType {
     BREAK_BLOCK,
     PLACE_BLOCK,
     REACH_LOCATION,
-    CRAFT_ITEM,
+    CRAFT_ITEM;
 
 }

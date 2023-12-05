@@ -28,5 +28,4 @@ public final class GuildManager {
     public Optional<Guild> getGuildByName(String name) {
         return Optional.ofNullable(guilds.get(name));
     }
-
 }
