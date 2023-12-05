@@ -6,10 +6,6 @@ public final class TierXpMultiplier extends Tier{
         super(level);
     }
 
-    public TierXpMultiplier() {
-        super(0);
-    }
-
     @Override
     public String getName() {
         return "XP Multiplier";
