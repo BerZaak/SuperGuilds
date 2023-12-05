@@ -66,6 +66,10 @@ public final class SuperGuilds extends JavaPlugin {
         return playerManager;
     }
 
+    public QuestManager getQuestManager() {
+        return questManager;
+    }
+
     public InventoryManager getInventoryManager() {
         return inventoryManager;
     }
