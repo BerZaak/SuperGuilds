@@ -1,11 +1,14 @@
 package fr.berzaak.superguilds;
 
 import fr.berzaak.superguilds.commands.GuildCreateCommand;
+import fr.berzaak.superguilds.commands.GuildQuestCommand;
 import fr.berzaak.superguilds.commands.GuildUpgradeCommand;
-import fr.berzaak.superguilds.listeners.GuildEntityListener;
-import fr.berzaak.superguilds.listeners.GuildPlayerListener;
+import fr.berzaak.superguilds.listeners.BlockListener;
+import fr.berzaak.superguilds.listeners.EntityListener;
+import fr.berzaak.superguilds.listeners.PlayerListener;
 import fr.berzaak.superguilds.manager.GuildManager;
 import fr.berzaak.superguilds.manager.PlayerManager;
+import fr.berzaak.superguilds.manager.QuestManager;
 import fr.berzaak.superguilds.utils.commands.CommandFramework;
 import fr.minuskube.inv.InventoryManager;
 import org.bukkit.Bukkit;
@@ -20,6 +23,7 @@ public final class SuperGuilds extends JavaPlugin {
     private static SuperGuilds instance;
     private final GuildManager guildManager = new GuildManager();
     private final PlayerManager playerManager = new PlayerManager();
+    private final QuestManager questManager = new QuestManager();
     private InventoryManager inventoryManager;
     private final ExecutorService executorService = Executors.newFixedThreadPool(2);
 
@@ -31,14 +35,16 @@ public final class SuperGuilds extends JavaPlugin {
         inventoryManager.init();
 
 
-        Bukkit.getPluginManager().registerEvents(new GuildPlayerListener(), this);
-        Bukkit.getPluginManager().registerEvents(new GuildEntityListener(), this);
+        Bukkit.getPluginManager().registerEvents(new PlayerListener(), this);
+        Bukkit.getPluginManager().registerEvents(new EntityListener(), this);
+        Bukkit.getPluginManager().registerEvents(new BlockListener(), this);
 
         Bukkit.getLogger().log(Level.FINE, "SuperGuilds - Enabled !");
 
         CommandFramework commandFramework = new CommandFramework(this);
         commandFramework.registerCommands(new GuildCreateCommand());
         commandFramework.registerCommands(new GuildUpgradeCommand());
+        commandFramework.registerCommands(new GuildQuestCommand());
 
     }
 

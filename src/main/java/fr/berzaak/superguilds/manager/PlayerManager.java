@@ -8,7 +8,11 @@ import java.util.UUID;
 
 public final class PlayerManager {
 
-    private final Cache<UUID, GuildPlayer> players = CacheBuilder.newBuilder().build();
+    private final Cache<UUID, GuildPlayer> players;
+
+    public PlayerManager() {
+        players = CacheBuilder.newBuilder().build();
+    }
 
     public GuildPlayer getGuildPlayer(UUID uuid) {
         return players.getIfPresent(uuid);
@@ -28,10 +32,12 @@ public final class PlayerManager {
 
     public void loadGuildPlayer(UUID uuid) {
         players.put(uuid, new GuildPlayer(uuid));
+        //TODO : Fetch player's data from Database
     }
 
     public void unloadGuildPlayer(UUID uuid) {
         players.invalidate(uuid);
+        //TODO : Save player's data to database
     }
 
 }

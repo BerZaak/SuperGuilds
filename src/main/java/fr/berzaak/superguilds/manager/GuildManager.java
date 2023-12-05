@@ -10,7 +10,11 @@ import java.util.Optional;
 
 public final class GuildManager {
 
-    private final Map<String, Guild> guilds = Maps.newHashMap();
+    private final Map<String, Guild> guilds;
+
+    public GuildManager() {
+        guilds = Maps.newHashMap();
+    }
 
     public List<Guild> getGuilds() {
         return Lists.newArrayList(guilds.values());

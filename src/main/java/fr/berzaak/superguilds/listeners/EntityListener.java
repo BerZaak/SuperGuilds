@@ -2,7 +2,6 @@ package fr.berzaak.superguilds.listeners;
 
 import fr.berzaak.superguilds.SuperGuilds;
 import fr.berzaak.superguilds.guild.GuildPlayer;
-import fr.berzaak.superguilds.manager.GuildManager;
 import fr.berzaak.superguilds.manager.PlayerManager;
 import fr.berzaak.superguilds.tier.Tier;
 import org.bukkit.entity.Player;
@@ -10,7 +9,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDeathEvent;
 
-public final class GuildEntityListener implements Listener {
+public final class EntityListener implements Listener {
 
     private final PlayerManager playerManager = SuperGuilds.getInstance().getPlayerManager();
 

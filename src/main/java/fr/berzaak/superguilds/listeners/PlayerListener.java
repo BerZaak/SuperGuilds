@@ -8,24 +8,20 @@ import org.bukkit.event.player.PlayerQuitEvent;
 
 import java.util.concurrent.CompletableFuture;
 
-public final class GuildPlayerListener implements Listener {
+public final class PlayerListener implements Listener {
 
     private final SuperGuilds instance = SuperGuilds.getInstance();
 
     @EventHandler
     public void onJoin(PlayerJoinEvent event) {
 
-        CompletableFuture.runAsync(() -> {
-            instance.getPlayerManager().loadGuildPlayer(event.getPlayer().getUniqueId());
-        }, instance.getExecutorService());
+        CompletableFuture.runAsync(() -> instance.getPlayerManager().loadGuildPlayer(event.getPlayer().getUniqueId()), instance.getExecutorService());
 
     }
 
     public void onQuit(PlayerQuitEvent event) {
 
-        CompletableFuture.runAsync(() -> {
-            instance.getPlayerManager().unloadGuildPlayer(event.getPlayer().getUniqueId());
-        }, instance.getExecutorService());
+        CompletableFuture.runAsync(() -> instance.getPlayerManager().unloadGuildPlayer(event.getPlayer().getUniqueId()), instance.getExecutorService());
 
     }
 
