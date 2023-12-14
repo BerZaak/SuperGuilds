@@ -26,7 +26,7 @@ public final class BlockListener implements Listener {
 
             guild.getActiveQuest().ifPresent(quest -> {
 
-                if (quest.getQuestType() == QuestType.PLACE_BLOCK) {
+                if (quest.getQuestType() == QuestType.PLACE_BLOCK && quest.getMaterial() == event.getBlock().getType()) {
 
                     guild.advanceQuest();
 
